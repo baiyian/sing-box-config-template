@@ -16,7 +16,7 @@ let proxies = await produceArtifact({
 config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
-  if (['all', 'all-auto'].includes(i.tag)) {
+  if (['🚀 节点选择', '♻️ 自动选择'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies))
   }
   if (['🇭🇰 香港节点', '🔯 香港自动'].includes(i.tag)) {
