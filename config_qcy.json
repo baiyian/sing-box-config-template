@@ -78,7 +78,7 @@
     { "tag": "🔯 香港自动", "type": "urltest", "outbounds": [], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
     { "tag": "🇯🇵 日本节点", "type": "selector", "outbounds": []},
     { "tag": "🇺🇲 美国节点", "type": "selector", "outbounds": []},
-    { "tag": "♻️ 自动选择", "type": "urltest", "outbounds": [], "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
+    { "tag": "♻️ 自动选择", "type": "urltest", "outbounds": [], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
     { "tag": "GLOBAL", "type": "selector", "outbounds": []},
     { "tag": "🎯 全球直连", "type": "direct" }
   ],
