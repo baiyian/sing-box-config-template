@@ -45,7 +45,7 @@
       "fdfe:dcba:9876::1/126"
     ],
     "stack": "mixed",
-    "auto_route": true,
+    "auto_route": true
   },
   {
     "type": "mixed",
