@@ -203,7 +203,6 @@
         ],
         "action": "reject"
       },
-      },
       {
         "rule_set": [
           "alibaba",
