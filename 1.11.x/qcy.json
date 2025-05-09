@@ -4,11 +4,10 @@
     "level": "info",
     "timestamp": true
   },
-  
   "experimental": {
     "clash_api": {
       "external_controller": "0.0.0.0:9095",
-      "external_ui": "/etc/sing-box/ui",
+      "external_ui": "C:/Users/John/scoop/apps/sing-box/ui",
       "secret": "",
       "external_ui_download_url": "https://ghfast.top/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "🎯 全球直连",
@@ -16,11 +15,10 @@
     },
   "cache_file": {
     "enabled": true,
-    "path": "/etc/sing-box/cache.db",
+    "path": "C:/Users/John/scoop/apps/sing-box/cache.db",
     "store_fakeip": false
     }
   },
-
  "dns": 
  {
    "servers": 
