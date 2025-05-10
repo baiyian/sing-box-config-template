@@ -1,0 +1,103 @@
+  "inbounds": [
+    {
+      "type": "tun",
+      "address": [
+        "172.19.0.1/30"
+      ],
+      "auto_route": true,
+      "strict_route": false
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "trojan",
+      "server": "MY_SERVER",
+      "tag": "proxy"
+    }
+  ],
+  "dns": {
+    "strategy": "ipv4_only",
+    "final": "google",
+    "servers": [
+      {
+        "tag": "local",
+        "type": "https",
+        "server": "223.5.5.5"
+      },
+      {
+        "tag": "google",
+        "type": "tls",
+        "server": "8.8.8.8",
+        "detour": "proxy"
+      },
+      {
+        "tag": "ts-dns",
+        "type": "tailscale",
+        "endpoint": "ts-ep",
+        "accept_default_resolvers": true
+      }
+    ],
+    "rules": [
+      {
+        "ip_accept_any": true,
+        "server": "ts-dns",
+        "domain_suffix": "ts.net"
+      },
+      {
+        "rule_set": "geosite-geolocation-cn",
+        "server": "local"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "local"
+      }
+    ]
+  },
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "ip_cidr": [
+          "192.168.50.0/24"
+        ],
+        "outbound": "ts-ep"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    "default_domain_resolver": {
+      "server": "local",
+      "rewrite_ttl": 60
+    },
+    "final": "proxy",
+    "auto_detect_interface": true
+  },
+  "endpoints": [
+    {
+      "type": "tailscale",
+      "tag": "ts-ep",
+      "state_directory": "tailscale"
+    }
+  ]
