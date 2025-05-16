@@ -21,7 +21,7 @@
     }
   },
 
- "dns": 
+  "dns": 
  {
    "servers": 
    [
@@ -40,31 +40,31 @@
    "strategy": "ipv4_only"
 },
 
-"inbounds": [
-  {
-    "type": "tun",
-    "address": "172.19.0.1/30",
-    "mtu": 9000,
-    "auto_route": true,
-    "auto_redirect": true,
-    "strict_route": true,
-    "stack": "system",
-    "platform": {
-      "http_proxy": {
-        "enabled": true,
-        "server": "127.0.0.1",
-        "server_port": 2080
+  "inbounds": [
+    {
+      "type": "tun",
+      "address": "172.19.0.1/30",
+      "mtu": 9000,
+      "auto_route": true,
+      "auto_redirect": true,
+      "strict_route": true,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
       }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "users": []
     }
-  },
-  {
-    "type": "mixed",
-    "listen": "127.0.0.1",
-    "listen_port": 2080,
-    "sniff": true,
-    "users": []
-  }
-],
+  ],
 
   "outbounds": [
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换", "♻️ 自动选择", "🎯 全球直连"] },
