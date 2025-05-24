@@ -34,6 +34,9 @@ config.outbounds.map(i => {
   if (['us', 'us-auto'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
   }
+  if (['tw-auto', 'us-auto','jp-auto','sg-auto'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /期|abc|ab|a b|dee/i))
+  }
 })
 
 config.outbounds.forEach(outbound => {
