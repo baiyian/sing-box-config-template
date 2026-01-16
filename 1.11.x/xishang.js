@@ -28,7 +28,7 @@ config.outbounds.map(i => {
   if (['🇯🇵 日本节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /日本|jp|japan|🇯🇵/i))
   }
-  if (['sg'].includes(i.tag)) {
+  if (['🇸🇬 星国节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /^(?!.*(?:us)).*(新|sg|singapore|🇸🇬)/i))
   }
   if (['🇺🇲 美国节点'].includes(i.tag)) {
