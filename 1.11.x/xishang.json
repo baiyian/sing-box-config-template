@@ -155,10 +155,10 @@
         "rule_set": [
           "facebook_ip",
           "facebook_domain",
-          "Instgram_domain"
+          "instagram_domain"
         ],
         "action": "route",
-        "outbound": "Instgram"
+        "outbound": "Instagram"
       },
       {
         "rule_set": [
@@ -285,10 +285,10 @@
         "download_detour": "direct"
       },
       {
-        "tag": "Instgram_domain",
+        "tag": "instagram_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/instgram.srs",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/instagram.srs",
         "download_detour": "direct"
       },
       {
@@ -347,7 +347,7 @@
       "default": "direct"
     },
     {
-      "tag": "Instgram",
+      "tag": "Instagram",
       "type": "selector",
       "outbounds": [
         "proxy",
