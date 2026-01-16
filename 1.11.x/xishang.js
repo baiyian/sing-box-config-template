@@ -22,7 +22,7 @@ config.outbounds.map(i => {
   if (['🇭🇰 香港节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /港|hk|hongkong|hong kong|🇭🇰/i))
   }
-  if (['tw'].includes(i.tag)) {
+  if (['🇹🇼 台湾节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /台|tw|taiwan|🇹🇼/i))
   }
   if (['🇯🇵 日本节点'].includes(i.tag)) {
