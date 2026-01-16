@@ -101,9 +101,14 @@
         "outbound": "direct"
       },
       {
-        "rule_set": "bilibili_domain",
+        "rule_set": "openai_domain",
         "action": "route",
-        "outbound": "bilibili"
+        "outbound": "🤖 OpenAI"
+      },
+      {
+        "rule_set": "youtube_domain",
+        "action": "route",
+        "outbound": "youtube"
       },
       {
         "rule_set": [
@@ -114,42 +119,15 @@
         "outbound": "🎥 Netflix"
       },
       {
+        "rule_set": "bilibili_domain",
+        "action": "route",
+        "outbound": "bilibili"
+      },
+
+      {
         "rule_set": "bahamut_domain",
         "action": "route",
         "outbound": "bahamut"
-      },
-      {
-        "rule_set": "youtube_domain",
-        "action": "route",
-        "outbound": "youtube"
-      },
-      {
-        "rule_set": "openai_domain",
-        "action": "route",
-        "outbound": "🤖 OpenAI"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "proxy_domain"
-          },
-          {
-            "invert": true,
-            "rule_set": [
-              "cn_domain",
-              "apple_domain",
-              "google_domain",
-              "netflix_domain"
-            ]
-          }
-        ],
-        "action": "route",
-        "outbound": "🚀 节点选择"
-      },
-      {
-        "action": "resolve"
       },
       {
         "rule_set": [
@@ -177,12 +155,21 @@
         "outbound": "🍏 Apple"
       },
       {
-        "rule_set": [
-          "cn_ip",
-          "cn_domain"
-        ],
+        "rule_set": "cn_domain",
         "action": "route",
         "outbound": "cn"
+      },
+      {
+        "action": "resolve"
+      },
+      {
+        "rule_set": "cn_ip",
+        "action": "route",
+        "outbound": "cn"
+      },
+      { "rule_set": "proxy_domain", 
+        "action": "route",
+        "outbound": "🚀 节点选择"
       }
     ],
     "rule_set": [
