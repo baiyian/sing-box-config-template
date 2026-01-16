@@ -119,16 +119,6 @@
         "outbound": "🎥 Netflix"
       },
       {
-        "rule_set": "bilibili_domain",
-        "action": "route",
-        "outbound": "bilibili"
-      },
-      {
-        "rule_set": "bahamut_domain",
-        "action": "route",
-        "outbound": "bahamut"
-      },
-      {
         "rule_set": [
           "facebook_ip",
           "facebook_domain",
@@ -184,20 +174,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/apple.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "bahamut_domain",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/bahamut.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "bilibili_domain",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/bilibili.srs",
         "download_detour": "direct"
       },
       {
@@ -348,21 +324,6 @@
       "default": "🚀 节点选择"
     },
     {
-      "tag": "bilibili",
-      "type": "selector",
-      "outbounds": [
-        "🚀 节点选择",
-        "direct",
-        "🇭🇰 香港节点",
-        "🇹🇼 台湾节点",
-        "🇯🇵 日本节点",
-        "🇸🇬 星国节点",
-        "🇺🇲 美国节点",
-        "🌎 全部节点"
-      ],
-      "default": "direct"
-    },
-    {
       "tag": "🎥 Netflix",
       "type": "selector",
       "outbounds": [
@@ -376,21 +337,6 @@
         "🌎 全部节点"
       ],
       "default": "🇭🇰 香港节点"
-    },
-    {
-      "tag": "bahamut",
-      "type": "selector",
-      "outbounds": [
-        "🚀 节点选择",
-        "direct",
-        "🇭🇰 香港节点",
-        "🇹🇼 台湾节点",
-        "🇯🇵 日本节点",
-        "🇸🇬 星国节点",
-        "🇺🇲 美国节点",
-        "🌎 全部节点"
-      ],
-      "default": "🚀 节点选择"
     },
     {
       "tag": "youtube",
