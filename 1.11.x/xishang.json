@@ -126,7 +126,7 @@
       {
         "rule_set": "openai_domain",
         "action": "route",
-        "outbound": "openai"
+        "outbound": "🤖 OpenAI"
       },
       {
         "type": "logical",
@@ -166,7 +166,7 @@
           "google_domain"
         ],
         "action": "route",
-        "outbound": "google"
+        "outbound": "🍀 Google"
       },
       {
         "rule_set": [
@@ -174,7 +174,7 @@
           "apple_domain"
         ],
         "action": "route",
-        "outbound": "apple"
+        "outbound": "🍏 Apple"
       },
       {
         "rule_set": [
@@ -318,7 +318,7 @@
       "default": "🇺🇲 美国节点"
     },
     {
-      "tag": "google",
+      "tag": "🍀 Google",
       "type": "selector",
       "outbounds": [
         "🚀 节点选择",
@@ -333,7 +333,7 @@
       "default": "🚀 节点选择"
     },
     {
-      "tag": "apple",
+      "tag": "🍏 Apple",
       "type": "selector",
       "outbounds": [
         "🚀 节点选择",
@@ -422,7 +422,7 @@
       "default": "🇺🇲 美国节点"
     },
     {
-      "tag": "openai",
+      "tag": "🤖 OpenAI",
       "type": "selector",
       "outbounds": [
         "🚀 节点选择",
