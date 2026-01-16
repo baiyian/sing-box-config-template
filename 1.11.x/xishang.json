@@ -140,8 +140,7 @@
             "rule_set": [
               "cn_domain",
               "apple_domain",
-              "google_domain",
-              "netflix_domain"
+              "google_domain"
             ]
           }
         ],
