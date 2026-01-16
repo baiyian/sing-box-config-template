@@ -314,7 +314,8 @@
         "us",
         "all",
         "direct"
-      ]
+      ],
+      "default": "us"
     },
     {
       "tag": "google",
@@ -389,7 +390,7 @@
         "us",
         "all"
       ],
-      "default": "proxy"
+      "default": "hk"
     },
     {
       "tag": "bahamut",
@@ -419,7 +420,7 @@
         "us",
         "all"
       ],
-      "default": "proxy"
+      "default": "us"
     },
     {
       "tag": "openai",
@@ -434,7 +435,7 @@
         "us",
         "all"
       ],
-      "default": "proxy"
+      "default": "us"
     },
     {
       "tag": "cn",
