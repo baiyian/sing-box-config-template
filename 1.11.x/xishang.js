@@ -16,21 +16,23 @@ let proxies = await produceArtifact({
 config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
-  if (['♻️ 自动选择','🐸 手动切换'].includes(i.tag)) {
+  if (['all'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies))
   }
-  if (['🇭🇰 香港节点', '🔯 香港自动'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /港|hk|hongkong|Hong kong|🇭🇰/i))
+  if (['🇭🇰 香港节点'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /港|hk|hongkong|hong kong|🇭🇰/i))
+  }
+  if (['tw'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /台|tw|taiwan|🇹🇼/i))
   }
   if (['🇯🇵 日本节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /日本|jp|japan|🇯🇵/i))
   }
+  if (['sg'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /^(?!.*(?:us)).*(新|sg|singapore|🇸🇬)/i))
+  }
   if (['🇺🇲 美国节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
-  }
-  if (['GLOBAL'].includes(i.tag)) {
-    const excludeRegex = /港|hk|hongkong|Hong kong|🇭🇰|日本|jp|japan|🇯🇵|美|us|unitedstates|united states|🇺🇸/i;
-    i.outbounds.push(...getTags(proxies.filter(proxy => !excludeRegex.test(proxy.tag))))
   }
 })
 
