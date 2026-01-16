@@ -314,7 +314,7 @@
         "us",
         "all",
         "direct"
-      ],
+      ]
     },
     {
       "tag": "google",
@@ -507,7 +507,7 @@
         "jp",
         "sg",
         "us",
-        "all",
+        "all"
       ],
       "default": "direct"
     },
