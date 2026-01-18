@@ -54,7 +54,7 @@
     "sniff_override_destination": true,
     "mtu": 1500
     },
-    {
+   {
     "type": "mixed",
     "listen": "127.0.0.1",
     "listen_port": 7890,
