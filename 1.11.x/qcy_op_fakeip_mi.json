@@ -91,8 +91,6 @@
     { "tag": "🎯 全球直连", "type": "direct" }
   ],
   "route": {
-   "auto_detect_interface": true,
-   "final": "🐠 漏网之鱼",
    "rules": [
      {"protocol":"quic","action": "reject"},
      {"action": "sniff","sniffer":["http","tls","dns"],"timeout":"500ms"},
@@ -116,6 +114,8 @@
      {"rule_set": "geosite-geolocation-!cn", "outbound": "🚀 节点选择"},
      {"rule_set": ["geoip-cn", "geosite-cn"], "outbound": "🎯 全球直连"}
    ],
+  "auto_detect_interface": true,
+  "final": "🐠 漏网之鱼",
    "rule_set": [
     { "tag": "geosite-chat", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🚀 节点选择" },
