@@ -49,8 +49,7 @@
         "server": "ali"
       }
     ],
-    "final": "google",
-    "independent_cache": true
+    "final": "google"
   },
   "route": {
     "default_domain_resolver": {
