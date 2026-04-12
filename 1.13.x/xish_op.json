@@ -31,6 +31,14 @@
         "server": "fakeip"
       },
       {
+       "domain_suffix": [
+          ".ts.net",
+          "tailscale.com"
+        ],
+        "action": "route",
+        "server": "ali" 
+      },
+      {
         "query_type": "HTTPS",
         "action": "reject"
       },
@@ -91,6 +99,8 @@
       {
         "ip_cidr": [
           "100.64.0.0/10",
+          "11.12.4.0/24",
+          "192.168.9.0/24",
           "fd7a:115c:a1e0::/48"
         ],
         "action": "route",
@@ -472,6 +482,7 @@
       ],
       "stack": "mixed",
       "auto_route": true,
+      "excluded_interface": [ "tailscale0" ],
       "platform": {
         "http_proxy": {
           "enabled": true,
