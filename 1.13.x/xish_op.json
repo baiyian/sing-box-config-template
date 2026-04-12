@@ -482,7 +482,6 @@
       ],
       "stack": "mixed",
       "auto_route": true,
-      "excluded_interface": [ "tailscale0" ],
       "platform": {
         "http_proxy": {
           "enabled": true,
