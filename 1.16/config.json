@@ -470,9 +470,7 @@
   "http_clients": [
     {
       "tag": "rules-direct",
-      "dial": {
-        "detour": "direct"
-      }
+      "detour": "direct"
     }
   ]
 }
