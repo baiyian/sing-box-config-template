@@ -480,12 +480,12 @@
     "level": "info",
     "timestamp": true
   },
-  "http": {
-    "clients": [
-      {
-        "tag": "rules-direct",
+  "http_clients": [
+    {
+      "tag": "rules-direct",
+      "dial": {
         "detour": "direct"
       }
-    ]
-  }
+    }
+  ]
 }
