@@ -33,7 +33,8 @@
       {
        "domain_suffix": [
           ".ts.net",
-          "tailscale.com"
+          "tailscale.com",
+          "cdn-res-oss-cn-hongkong-aliyuncs-file.com"
         ],
         "action": "route",
         "server": "ali" 
@@ -91,7 +92,8 @@
       {
         "domain_suffix": [
           "tailscale.com",
-          "ts.net"
+          "ts.net",
+          "cdn-res-oss-cn-hongkong-aliyuncs-file.com"
         ],
         "action": "route",
         "outbound": "direct"
