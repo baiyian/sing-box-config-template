@@ -54,7 +54,12 @@
   "http_clients": [
     {
       "tag": "rules-direct",
-      "detour": "direct"
+      "detour": "direct",
+      "engine": "apple",
+      "tls": {
+        "enabled": true,
+        "server_name": "ghfast.top"
+      }
     }
   ],
   "route": {
