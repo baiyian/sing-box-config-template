@@ -51,6 +51,12 @@
     ],
     "final": "google"
   },
+  "http_clients": [
+    {
+      "tag": "rules-direct",
+      "detour": "direct"
+    }
+  ],
   "route": {
     "default_domain_resolver": {
       "server": "ali"
@@ -478,11 +484,5 @@
     "disabled": false,
     "level": "info",
     "timestamp": true
-  },
-  "http_clients": [
-    {
-      "tag": "rules-direct",
-      "detour": "direct"
-    }
-  ]
+  }
 }
