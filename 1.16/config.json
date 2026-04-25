@@ -55,11 +55,7 @@
     {
       "tag": "rules-direct",
       "detour": "direct",
-      "engine": "apple",
-      "tls": {
-        "enabled": true,
-        "server_name": "ghfast.top"
-      }
+      "engine": "apple"
     }
   ],
   "route": {
