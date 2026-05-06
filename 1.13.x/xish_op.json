@@ -451,8 +451,9 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50
+      "interval": "30m",
+      "tolerance": 50,
+      "idle_timeout": "30m"
     },
     {
       "tag": "GLOBAL",
@@ -484,6 +485,7 @@
       ],
       "stack": "mixed",
       "auto_route": true,
+      "route_exclude_address": ["10.0.0.0/8", "100.64.0.0/10", "169.254.0.0/16", "172.16.0.0/12", "192.0.0.0/24", "11.12.4.0/24""192.168.0.0/16"],
       "platform": {
         "http_proxy": {
           "enabled": true,
