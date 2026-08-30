@@ -34,6 +34,7 @@
        "domain_suffix": [
           ".ts.net",
           "tailscale.com",
+          "derp.tailscale.com",
           "cdn-res-oss-cn-hongkong-aliyuncs-file.com"
         ],
         "action": "route",
@@ -93,6 +94,7 @@
         "domain_suffix": [
           "tailscale.com",
           "ts.net",
+          "derp.tailscale.com,
           "cdn-res-oss-cn-hongkong-aliyuncs-file.com"
         ],
         "action": "route",
