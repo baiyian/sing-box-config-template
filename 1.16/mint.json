@@ -7,6 +7,11 @@
   "dns": {
     "servers": [
       {
+        "tag": "ali-udp",
+        "type": "udp",
+        "server": "223.5.5.5"
+      },
+      {
         "tag": "google",
         "type": "https",
         "server": "8.8.8.8",
@@ -14,7 +19,7 @@
       },
       {
         "tag": "ali",
-        "type": "udp",
+        "type": "https",
         "server": "223.5.5.5"
       },
       {
@@ -36,15 +41,6 @@
         "server": "fakeip"
       },
       {
-        "domain_suffix": [
-          ".ts.net",
-          "tailscale.com",
-          "cdn-res-oss-cn-hongkong-aliyuncs-file.com"
-        ],
-        "action": "route",
-        "server": "ali"
-      },
-      {
         "query_type": "HTTPS",
         "action": "reject"
       },
@@ -54,7 +50,8 @@
           "AAAA"
         ],
         "action": "route",
-        "server": "fakeip"
+        "server": "fakeip",
+        "rewrite_ttl": 1
       },
       {
         "rule_set": "cn_domain",
@@ -62,9 +59,14 @@
         "server": "ali"
       }
     ],
-    "final": "google",
-    "independent_cache": true
+    "final": "google"
   },
+  "http_clients": [
+    {
+      "tag": "rules-direct",
+      "detour": "direct"
+    }
+  ],
   "inbounds": [
     {
       "type": "tun",
@@ -77,6 +79,14 @@
       "auto_route": true,
       "strict_route": true,
       "sniff": true,
+      "route_exclude_address": [
+        "10.0.0.0/8",
+        "100.64.0.0/10",
+        "169.254.0.0/16",
+        "172.16.0.0/12",
+        "192.0.0.0/24",
+        "192.168.0.0/16"
+      ],
       "platform": {
         "http_proxy": {
           "enabled": true,
@@ -255,8 +265,9 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50
+      "interval": "30m",
+      "tolerance": 50,
+      "idle_timeout": "30m"
     },
     {
       "tag": "GLOBAL",
@@ -276,13 +287,15 @@
     },
     {
       "tag": "direct",
-      "type": "direct"
+      "type": "direct",
+      "domain_resolver": "ali-udp"
     }
   ],
   "route": {
     "default_domain_resolver": {
-      "server": "ali"
+      "server": "ali-udp"
     },
+    "default_http_client": "rules-direct",
     "rules": [
       {
         "action": "sniff",
@@ -306,33 +319,6 @@
           }
         ],
         "action": "hijack-dns"
-      },
-      {
-        "domain_suffix": [
-          "tailscale.com",
-          "ts.net",
-          "cdn-res-oss-cn-hongkong-aliyuncs-file.com"
-        ],
-        "action": "route",
-        "outbound": "direct"
-      },
-      {
-        "ip_cidr": [
-          "100.64.0.0/10",
-          "11.12.4.0/24",
-          "192.168.9.0/24",
-          "fd7a:115c:a1e0::/48"
-        ],
-        "action": "route",
-        "outbound": "direct"
-      },
-      {
-        "source_ip_cidr": [
-          "100.64.0.0/10",
-          "fd7a:115c:a1e0::/48"
-        ],
-        "action": "route",
-        "outbound": "direct"
       },
       {
         "ip_is_private": true,
@@ -423,84 +409,84 @@
         "tag": "apple_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/apple.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
         "download_detour": "direct"
       },
       {
         "tag": "apple_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/apple.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geosite/apple.srs",
         "download_detour": "direct"
       },
       {
         "tag": "cn_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
         "download_detour": "direct"
       },
       {
         "tag": "cn_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/cn.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geosite/cn.srs",
         "download_detour": "direct"
       },
       {
         "tag": "google_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/google.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/google.srs",
         "download_detour": "direct"
       },
       {
         "tag": "google_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/google.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geosite/google.srs",
         "download_detour": "direct"
       },
       {
         "tag": "geosite-facebook",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/facebook.srs",
         "download_detour": "direct"
       },
       {
         "tag": "geosite-instagram",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/instagram.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/instagram.srs",
         "download_detour": "direct"
       },
       {
         "tag": "geoip-facebook",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/facebook.srs",
         "download_detour": "direct"
       },
       {
         "tag": "openai_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/openai.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
         "download_detour": "direct"
       },
       {
         "tag": "proxy_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/geolocation-!cn.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
         "download_detour": "direct"
       },
       {
         "tag": "youtube_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/youtube.srs",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geosite/youtube.srs",
         "download_detour": "direct"
       }
     ],
@@ -511,7 +497,6 @@
     "clash_api": {
       "external_controller": "0.0.0.0:9095",
       "external_ui": "/etc/sing-box/ui",
-      "external_ui_download_url": "https://ghfast.top/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "direct"
     },
     "cache_file": {
